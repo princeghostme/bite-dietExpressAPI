@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/routes.ts","./src/controllers/helloworld.ts","./src/utility/errormanagement.ts","./src/utility/appresponse.ts","./src/utility/errorhandlingmiddlware.ts"],"version":"5.8.2"}
