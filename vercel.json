@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "/dist/Index.js",
+        "use": "@gvercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "Index.js"
+      }
+    ]
+  }
+  
