@@ -3,7 +3,7 @@
     "builds": [
       {
         "src": "/dist/Index.js",
-        "use": "@gvercel/node"
+        "use": "@vercel/node"
       }
     ],
     "routes": [
