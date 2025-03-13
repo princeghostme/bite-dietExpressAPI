@@ -11,11 +11,13 @@ app.use(cors());
 app.use(express.json());
 mongoUsers();
 
-app.use("/",(req:Request, res:Response)=>{
-    myAppRes(res,{data:"user Service Started"})
-});
+
 app.use("/api",routes);
 app.use(errorHandlingMiddlware);
+
+app.get("/",(req:Request, res:Response)=>{
+    myAppRes(res,{data:"user Service Started"})
+});
 
 app.listen(port,()=>{
     console.log(`app running at port: ${port}`)
