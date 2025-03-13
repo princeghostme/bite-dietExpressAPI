@@ -14,11 +14,11 @@ const port = 3000;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 (0, mongoUsers_1.default)();
-app.use("/", (req, res) => {
-    (0, appResponse_1.myAppRes)(res, { data: "user Service Started" });
-});
 app.use("/api", routes_1.default);
 app.use(errorHandlingMiddlware_1.default);
+app.get("/", (req, res) => {
+    (0, appResponse_1.myAppRes)(res, { data: "user Service Started" });
+});
 app.listen(port, () => {
     console.log(`app running at port: ${port}`);
 });
