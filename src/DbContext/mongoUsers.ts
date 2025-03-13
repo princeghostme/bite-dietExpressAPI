@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
-let url = "mongodb://localhost:27017/Users";
+let url = "mongodb+srv://yaduvanshiprince2007:7jhEXDlhEIVdKETg@cluster0.myqck.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const mongoUser = async () => {
     try {
-        await mongoose.connect(url);
+        await mongoose.connect(url,{
+            dbName : "Users"
+        });
         console.info("Connected to mongo successfully")
     }
     catch (error) {

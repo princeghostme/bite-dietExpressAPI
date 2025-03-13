@@ -26,11 +26,11 @@ exports.default = (error, req, res, next) => __awaiter(void 0, void 0, void 0, f
     const errorcode = error.statusCode || 500;
     switch (errorcode.toString()) {
         case "500": {
-            yield (0, appResponse_1.myAppRes)(res, new appResponse_1.AppResponse().AppErrorResponse(new ErrorManagement_1.default().BadRequest()), error.statusCode);
+            yield (0, appResponse_1.myAppRes)(res, new appResponse_1.AppResponse().AppErrorResponse(new ErrorManagement_1.default().BadRequest(error.message)), error.statusCode);
             break;
         }
         default: {
-            var defaultError = new ErrorManagement_1.default().internalServerError();
+            var defaultError = new ErrorManagement_1.default().internalServerError(error.message);
             var data = new appResponse_1.AppResponse().AppErrorResponse(defaultError);
             yield (0, appResponse_1.myAppRes)(res, data, error.statusCode);
         }

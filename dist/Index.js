@@ -7,10 +7,12 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const errorHandlingMiddlware_1 = __importDefault(require("./Utility/errorHandlingMiddlware"));
+const mongoUsers_1 = __importDefault(require("./DbContext/mongoUsers"));
 const app = (0, express_1.default)();
-const port = 4000;
+const port = 3000;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+(0, mongoUsers_1.default)();
 app.use("/api", routes_1.default);
 app.use(errorHandlingMiddlware_1.default);
 app.listen(port, () => {
