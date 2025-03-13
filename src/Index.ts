@@ -3,7 +3,7 @@ import cors from "cors";
 import routes from "./routes";
 import errorHandlingMiddlware from "./Utility/errorHandlingMiddlware";
 import mongoUsers from "./DbContext/mongoUsers";
-import { myAppRes } from "./Utility/appResponse";
+import { AppResponse, myAppRes } from "./Utility/appResponse";
 
 const app = express();
 const port = 3000;
@@ -16,7 +16,7 @@ app.use("/api",routes);
 app.use(errorHandlingMiddlware);
 
 app.get("/",(req:Request, res:Response)=>{
-    myAppRes(res,{data:"user Service Started"})
+    myAppRes(res,new AppResponse().AppResponse({data:"user Service Started"}))
 });
 
 app.listen(port,()=>{
