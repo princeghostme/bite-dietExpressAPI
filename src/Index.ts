@@ -12,7 +12,7 @@ app.use(express.json());
 mongoUsers();
 
 app.use("/",(req:Request, res:Response)=>{
-    myAppRes(res,{data:"Service Started"})
+    myAppRes(res,{data:"user Service Started"})
 });
 app.use("/api",routes);
 app.use(errorHandlingMiddlware);
