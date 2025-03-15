@@ -6,6 +6,8 @@ const schema = mongoose.Schema<login>;
 const userLogin = new schema({
     userid: {String, required :true},
     password: {String,required:true}
+},{
+    collection : "Collection"
 })
 
 export default mongoose.model("login",userLogin);

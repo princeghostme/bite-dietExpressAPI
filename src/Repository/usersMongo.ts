@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose ,{Schema}  from "mongoose";
 import { user } from "../Model/User";
 
 
@@ -26,14 +26,40 @@ const userSchema = new schema({
     age: { type: Number, required: true },
     weight: Number,
     phone: String,
-    email: { type: String, required: true },
-    password: { type: String, default: passwordGenrator },
+    email: { type: String, required: true, lowercase:true, match: [/\S+@\S+\.\S+/, 'Please enter a valid email address'] },
+    password: { type: String, default: passwordGenrator, select :false },
     typeOfRecommendation: { type: Number, required: true },
     dietHabit: String,
     doctorsPrescription: { type: [String], default: [] },
     diseases: { type: [String], default: [] },
     allergies: { type: [String], default: [] },
-    medications: { type: [String], default: [] }
+    medications: { type: [String], default: [] },
+    created : {type : Date, default : new Date()},
+    modified : {type : Date,default :new Date()},
+    manangerId: {type : Schema.Types.ObjectId, ref: "User"}
+},{
+    collection : "all_Users",
+    timestamps : {createdAt: "created", updatedAt : "modified"},
+    versionKey : false,
+    autoIndex : true,
+    toJSON :{
+        minimize:true,
+        transform : (doc, ret, option)=>{
+            delete ret.passowrd
+            return ret;
+        }
+    }
 });
+
+userSchema.pre("save",async function(next){
+    if(this.isNew){
+        this.created = new Date();
+        this.modified = new Date();
+    }
+    if( this.isModified()){
+        this.modified = new Date();
+    }
+    next();
+})
 
 export default mongoose.model('User', userSchema);

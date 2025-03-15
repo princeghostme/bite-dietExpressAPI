@@ -8,6 +8,8 @@ const changePassword = new schema({
     oldPassword: { String, required: true },
     newPassword: { String, required: true },
     confirmPassword: { String, required: true }
+},{
+    collection : "password"
 })
 
 

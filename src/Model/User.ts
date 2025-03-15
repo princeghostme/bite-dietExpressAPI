@@ -1,5 +1,7 @@
-export interface user {
-    id:number;
+import mongoose, { Document } from "mongoose";
+import { common } from "./common";
+
+export interface user extends common,Document {
     code:string;
     f_name: string;
     m_name: string;
@@ -17,6 +19,8 @@ export interface user {
     doctorsPrescription:string[];
     diseases:string[];
     allergies:string[];
-    medications:string[];  
+    medications:string[];
+    manangerId?: mongoose.Types.ObjectId;
+    
 }
 

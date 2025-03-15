@@ -6,9 +6,6 @@ export default class ErrorMangement implements AppError {
     statusCode?: number = 500;
     name: string = "Bad request";
     stack?: string | undefined;
-    // constructor() {
-    //     this.message = 
-    // }
     BadRequest(message: string = "Bad Request") {
         this.message = message;
         this.statusCode = 404;
